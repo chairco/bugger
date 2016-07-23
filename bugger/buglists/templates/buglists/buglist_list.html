@@ -1,0 +1,40 @@
+{# buglists/buglist_list.html #}
+{% extends 'buglists/_base.html' %}
+
+{% block title %}Buglists | {{ block.super }}{% endblock title %}
+
+{% block content %}
+    
+    <ul class="breadcrumb">
+        {% block bar %}{{ block.super }}
+        <li class="active">Buglist list</li>
+        {% endblock bar %}
+    </ul>
+
+    <div class="page-header">
+        <a class="btn btn-primary pull-right" href="{% url 'buglist_add' %}">Add Bug</a>
+        <h1>Bug List</h1>
+    </div>
+
+    {% if object_list %}
+    <table class="table table-striped">
+        <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Created_at</th>
+        </tr>
+        {% for object in object_list %}
+        <tr>
+            <td>{{ object.id }}</td>
+            <td><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></td>
+            <td>{{ object.content }}</td>
+            <td>{{ object.created_at }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <h4> No Data </h4>
+    {% endif %}
+
+{% endblock content %}

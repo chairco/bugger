@@ -1,0 +1,26 @@
+{# buglist/buglist_detail.html #}
+{% extends 'buglists/_base.html' %}
+
+{% block title %}Bug Detail | {{ block.super }}{% endblock title %}
+
+{% block content %}
+
+    <ul class="breadcrumb">
+        {% block bar %}{{ block.super }}
+            <li class="active">{{ object.title }}</li>
+        {% endblock bar %}
+    </ul>
+
+    <div class="page-header">
+        <a class="btn btn-primary pull-right" href="{% url 'buglist_edit' pk=object.pk %}"><i class="icon-edit icon-white"></i>Edit</a>
+        <h1>{{ object.title }}</h1>
+    </div>
+
+    <div class="row">
+        <blockquote>
+          <p>{{ object.content }}</p>
+          <footer>Owner：<cite title="Source Title">{{ object.owner }}</cite></footer>
+        </blockquote>
+    </div>
+
+{% endblock content %}

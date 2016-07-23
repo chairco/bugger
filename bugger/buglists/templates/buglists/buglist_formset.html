@@ -1,0 +1,52 @@
+{# faships/buglist_formset.html #}
+{% extends 'buglists/_base.html' %}
+
+{% load staticfiles crispy_forms_tags %}
+
+{% block title %}Faships Formset | {{ block.super }}{% endblock title %}
+
+{% block link %}{{ block.super }}
+    <style type="text/css">
+    .errorlist {
+        list-style: none;
+        color: #B94A48;
+        margin: 0px 0px 9px 0px;
+        padding: 0px;
+    }
+    </style>
+{% endblock link %}
+
+{% block js %}{{ block.super }}
+{% endblock js %}
+
+{% block content %}
+
+    <ul class="breadcrumb">
+        {% block bar %}{{ block.super }}
+            {% if object.title %}
+                <li class="active">{{ object.title }}</li>
+            {% else %}
+                <li class="active">Bug edit</li>
+            {% endif %}
+        {% endblock bar %}
+    </ul>
+
+    <div class="page-header">
+        <h1>{% if form.instance.pk %}Edit{% else %}Add{% endif %} Buglist </h1>
+    </div>
+
+    <form action="." method="post">
+        {% csrf_token %}
+
+        <legend>Buglist</legend>
+        <div class="Faship">
+        {{ form|crispy }}
+        {#{% crispy form %}#}
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+        <hr></hr>
+    </form>
+
+{% endblock content %}
