@@ -6,8 +6,8 @@ from .models import Buglist, Tracker
 
 @admin.register(Buglist)
 class BuglistAdmin(admin.ModelAdmin):
-    list_display = ['types', 'title', 'content']
+    list_display = ['id', 'types', 'title', 'content', 'owner', 'created_at']
 
 @admin.register(Tracker)
 class BuglistAdmin(admin.ModelAdmin):
-    list_display = ['buglist', 'message', 'created_at']
+    list_display = ['id', 'buglist', 'message', 'owner', 'created_at']

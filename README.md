@@ -16,4 +16,4 @@
 
 
 
-[localhost:8000]: http://localhost:8000
+[網址]: http://172.28.138.62:8888/
