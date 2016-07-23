@@ -7,12 +7,12 @@
     
     <ul class="breadcrumb">
         {% block bar %}{{ block.super }}
-        <li class="active">Buglist list</li>
+        <li class="active">list</li>
         {% endblock bar %}
     </ul>
 
     <div class="page-header">
-        <a class="btn btn-primary pull-right" href="{% url 'buglist_add' %}">Add Bug</a>
+        <a class="btn btn-primary pull-right" href="{% url 'buglist_add' %}">餵我 Bug</a>
         <h1>Bug List</h1>
     </div>
 
@@ -20,16 +20,26 @@
     <table class="table table-striped">
         <tr>
             <th>#</th>
+            <th>Type</th>
             <th>Title</th>
             <th>Content</th>
             <th>Created_at</th>
+            <th>Status</th>
         </tr>
         {% for object in object_list %}
         <tr>
             <td>{{ object.id }}</td>
+            <td>{{ object.types }}</td>
             <td><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></td>
             <td>{{ object.content }}</td>
             <td>{{ object.created_at }}</td>
+            <td>
+            {% if object.status == "OPEN" %}
+                <span class="label label-danger">open</span>
+            {% elif object.status == "CLOSE" %}
+                <span class="label label-default">close</span>
+            {% endif %}
+            </td>
         </tr>
         {% endfor %}
     </table>

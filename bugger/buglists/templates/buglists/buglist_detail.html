@@ -14,13 +14,35 @@
     <div class="page-header">
         <a class="btn btn-primary pull-right" href="{% url 'buglist_edit' pk=object.pk %}"><i class="icon-edit icon-white"></i>Edit</a>
         <h1>{{ object.title }}</h1>
+        {% if object.status == "OPEN" %}
+            <span class="label label-danger">#{{object.id}} open</span>
+        {% elif object.status == "CLOSE" %}
+            <span class="label label-default">#{{object.id}} close</span>
+        {% endif %}
     </div>
 
     <div class="row">
         <blockquote>
-          <p>{{ object.content }}</p>
-          <footer>Owner：<cite title="Source Title">{{ object.owner }}</cite></footer>
+            <div class="main">
+                <p>{{ object.content }}</p>
+                <footer>Owner：<cite title="Source Title">{{ object.owner }}, {{ object.created_at }}</cite></footer><br>
+            </div>
+            
+            <legend>Timeline</legend>
+            <div class="form-trackers">
+                <a class="btn btn-primary pull-right" href="{% url 'buglist_tracker' %}"><i class="icon-edit icon-white"></i>進度更新</a>
+            </div>
+
+            <div class="sub">
+                {% for item in object.menu_items.all %}
+                <blockquote>
+                    <p>#{{ item.id }}, {{ item.message }}</p>
+                    <footer>Owner：<cite title="Source Title">{{ item.owner }}, {{ item.created_at }}</cite></footer>
+                </blockquote>
+                {% endfor %}
+            </div>
         </blockquote>
+
     </div>
 
 {% endblock content %}

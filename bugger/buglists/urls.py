@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^(?P<pk>\d+)/$', views.BuglistDetail.as_view(), name='buglist_detail'),
     url(r'^add/$', views.BuglistCreateView.as_view(), name='buglist_add'),
     url(r'^(?P<pk>\d+)/edit/$', views.BuglistUpdateView.as_view(), name='buglist_edit'),
+    url(r'^tracker/add/$', views.BuglistTracker.as_view(), name='buglist_tracker'),
 ]

@@ -1,9 +1,9 @@
-{# buglists/buglist_formset.html #}
+{# buglists/buglist_tracker.html #}
 {% extends 'buglists/_base.html' %}
 
 {% load staticfiles crispy_forms_tags %}
 
-{% block title %}Buglist Formset | {{ block.super }}{% endblock title %}
+{% block title %}Buglist Tracker | {{ block.super }}{% endblock title %}
 
 {% block link %}{{ block.super }}
     <style type="text/css">
@@ -26,22 +26,17 @@
             {% if object.title %}
                 <li class="active">{{ object.title }}</li>
             {% else %}
-                <li class="active">Bug edit</li>
+                <li class="active">Bug Tracker</li>
             {% endif %}
         {% endblock bar %}
     </ul>
 
-    <div class="page-header">
-        <h1>{% if form.instance.pk %}Edit{% else %}Add{% endif %} Buglist </h1>
-    </div>
-
     <form action="." method="post">
         {% csrf_token %}
 
-        <legend>Buglist</legend>
+        <legend>進度更新</legend>
         <div class="Faship">
         {{ form|crispy }}
-        {#{% crispy form %}#}
         </div>
         <div class="form-actions">
             <button type="submit" class="btn btn-primary">Save</button>
