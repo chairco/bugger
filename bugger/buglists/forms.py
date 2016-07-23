@@ -5,12 +5,19 @@ from django.forms.models import inlineformset_factory
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 
-from .models import Buglist, Tracker
+from .models import Buglist, Tracker, Station
+
+
+BuglistFormSet = inlineformset_factory(
+    Buglist, Station, extra=0, min_num=1,
+    fields=('stationid',)
+)
+
 
 class BuglistForm(forms.ModelForm):
     class Meta:
         model = Buglist
-        fields = ('status', 'types', 'title', 'content',)
+        fields = ('status', 'types', 'station', 'title', 'content',)
 
 
 class TrackerForm(forms.ModelForm):

@@ -24,6 +24,11 @@ class Buglist(models.Model):
         verbose_name=_('Type')
     )
 
+    station = models.CharField(
+        max_length=20,
+        verbose_name=_('station'),
+    )
+
     title = models.CharField(
         max_length=100,
         verbose_name=_('title'),
@@ -71,7 +76,7 @@ class Tracker(models.Model):
 
     buglist = models.ForeignKey(
         'Buglist',
-        related_name='menu_items', 
+        related_name='menu_items_tracker', 
         verbose_name=_('buglist'),
     )
 
@@ -95,3 +100,32 @@ class Tracker(models.Model):
 
     def get_absolute_url(self):
        return reverse('buglist_detail', kwargs={'pk': self.buglist.pk})
+
+
+class Station(models.Model):
+
+    buglist = models.ForeignKey(
+        'Buglist',
+        related_name='menu_items_station', 
+        verbose_name=_('buglist'),
+    )
+
+    stationid = models.CharField(
+        max_length=50,
+        verbose_name=_('stationid'),
+    )
+
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        editable=False,
+    )
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = _('Station')
+        verbose_name_plural = _('Stations')
+
+    def __str__(self):
+        return self.station
+
+

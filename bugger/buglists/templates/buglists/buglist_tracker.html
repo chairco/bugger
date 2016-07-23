@@ -1,10 +1,7 @@
 {# buglists/buglist_tracker.html #}
 {% extends 'buglists/_base.html' %}
-
 {% load staticfiles crispy_forms_tags %}
-
 {% block title %}Buglist Tracker | {{ block.super }}{% endblock title %}
-
 {% block link %}{{ block.super }}
     <style type="text/css">
     .errorlist {
@@ -20,7 +17,6 @@
 {% endblock js %}
 
 {% block content %}
-
     <ul class="breadcrumb">
         {% block bar %}{{ block.super }}
             {% if object.title %}
@@ -30,10 +26,8 @@
             {% endif %}
         {% endblock bar %}
     </ul>
-
     <form action="." method="post">
         {% csrf_token %}
-
         <legend>進度更新</legend>
         <div class="Faship">
         {{ form|crispy }}
@@ -43,5 +37,4 @@
         </div>
         <hr></hr>
     </form>
-
 {% endblock content %}
