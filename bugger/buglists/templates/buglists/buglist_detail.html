@@ -17,7 +17,7 @@
         {% if object.status == "OPEN" %}
             <span class="label label-danger">#{{ object.id }} open</span>
         {% elif object.status == "CLOSE" %}
-            <span class="label label-default">#{{ object.id }} close</span>
+            <span class="label label-success">#{{ object.id }} close</span>
         {% endif %}
         <span class="label label-info">{{ object.station }}</span>
     </div>
@@ -27,8 +27,13 @@
             <div class="main">
                 <p>{{ object.content }}</p>
                 {% for station in object.menu_items_station.all %}
-                    <code>{{ station.stationid }}</code><br>
-                {% endfor %}
+                    <code>{{ station.stationid }}</code>
+                    {% if station.status == "OPEN" %}
+                        <span class="label label-danger">open</span>
+                    {% elif station.status == "CLOSE" %}
+                        <span class="label label-success">close</span>
+                    {% endif %}<br>
+                {% endfor %}<br>
                 <footer>Owner：<cite title="Source Title">{{ object.owner }}, {{ object.created_at }}</cite></footer><br>
             </div>
             

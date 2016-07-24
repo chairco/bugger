@@ -10,7 +10,7 @@ from .models import Buglist, Tracker, Station
 
 BuglistFormSet = inlineformset_factory(
     Buglist, Station, extra=0, min_num=1,
-    fields=('stationid',)
+    fields=('stationid', 'status',)
 )
 
 

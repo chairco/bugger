@@ -114,6 +114,16 @@ class Station(models.Model):
         max_length=50,
         verbose_name=_('stationid'),
     )
+    
+    STATUS_CHOICES = (
+        ('OPEN', _('OPEN')),
+        ('CLOSE', _('CLOSE')),
+    )
+    status = models.CharField(
+        max_length=5, 
+        choices=STATUS_CHOICES,
+        verbose_name=_('status')
+    )
 
     created_at = models.DateTimeField(
         auto_now_add=True,

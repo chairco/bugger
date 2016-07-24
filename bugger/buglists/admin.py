@@ -21,4 +21,4 @@ class BuglistAdmin(admin.ModelAdmin):
 
 @admin.register(Station)
 class BuglistAdmin(admin.ModelAdmin):
-    list_display = ['id', 'stationid', 'created_at']
+    list_display = ['id', 'stationid', 'status', 'created_at']
