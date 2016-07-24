@@ -5,9 +5,9 @@
 <html>
 <head>
 <title>{% block title %}巴哥{% endblock title %}</title>
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<!-- <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css' %}">
-<link rel="stylesheet" href="{% static 'base/css/multi-select.css' %}"> -->
+<!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->
+<link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'base/css/multi-select.css' %}">
 </head>
 
 <body>
@@ -39,8 +39,9 @@
   </footer>
 </div>
 
-<!-- <script src="{% static 'base/js/jquery.js' %}"></script> -->
-<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+<!--<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>-->
+<script src="{% static 'base/js/jquery.js' %}"></script>
+<script src="{% static 'base/js/jquery-2.2.1.min.js' %}"></script>
 {% block js %}{% endblock js %}
 
 </body>
