@@ -4,6 +4,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import permission_required
+from django.core.urlresolvers import reverse
+from django.http import Http404
+
+from events.forms import EventForm
 
 from .models import Buglist, Tracker
 
@@ -16,6 +20,7 @@ class FormsetMixin(object):
     def get(self, request, *args, **kwargs):
         if getattr(self, 'is_update_view', False):
             self.object = self.get_object()
+        
         form_class = self.get_form_class()
         form = self.get_form(form_class)
         formset_class = self.get_formset_class()
@@ -96,4 +101,15 @@ class BuglistTracker(CreateView):
     model = Tracker
 
 
-
+def buglist_detail(request, pk):
+    try:
+        buglist = Buglist.objects.get(pk=pk)
+    except Buglist.DoesNotExist:
+        raise Http404
+    #event_form = EventForm(initial={'buglist': buglist}, submit_title='建立追蹤')
+    #event_form.helper.form_action = reverse('event_create')
+    event_form = TrackerForm(initial={'buglist': buglist}, submit_title='建立追蹤')
+    event_form.helper.form_action = reverse('buglist_tracker')
+    return render(request, 'buglists/buglist_detail.html', {
+        'object': buglist, 'event_form': event_form,
+    })

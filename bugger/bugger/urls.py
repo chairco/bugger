@@ -23,5 +23,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index, name='home'),
 
+    #url(r'^event/', include('events.urls')),
     url(r'^buglist/', include('buglists.urls')),
 ]

@@ -43,6 +43,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'buglists',
+    #'events',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',

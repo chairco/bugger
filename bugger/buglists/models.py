@@ -158,6 +158,6 @@ class Station(models.Model):
         verbose_name_plural = _('Stations')
 
     def __str__(self):
-        return self.station
+        return self.stationid
 
 

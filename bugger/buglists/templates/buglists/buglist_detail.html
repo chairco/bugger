@@ -1,6 +1,6 @@
 {# buglist/buglist_detail.html #}
 {% extends 'buglists/_base.html' %}
-
+{% load crispy_forms_tags %}
 {% block title %}Bug Detail | {{ block.super }}{% endblock title %}
 
 {% block content %}
@@ -38,9 +38,9 @@
             </div>
             
             <legend>Timeline</legend>
-            <div class="form-trackers">
+            <!-- <div class="form-trackers">
                 <a class="btn btn-primary pull-right" href="{% url 'buglist_tracker' %}"><i class="icon-edit icon-white"></i>進度更新</a>
-            </div>
+            </div> -->
 
             <div class="sub">
                 {% for item in object.menu_items_tracker.all %}
@@ -51,6 +51,10 @@
                 {% endfor %}
             </div>
         </blockquote>
+
+        <div class="form-trackers">
+            {% crispy event_form %}
+        </div>
 
     </div>
 
