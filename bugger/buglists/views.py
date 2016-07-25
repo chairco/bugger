@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import permission_required
 from django.core.urlresolvers import reverse
 from django.http import Http404
 
-from events.forms import EventForm
+#from events.forms import EventForm
 
 from .models import Buglist, Tracker
 
