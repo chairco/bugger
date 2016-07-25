@@ -24,8 +24,30 @@ class Buglist(models.Model):
         verbose_name=_('Type')
     )
 
+    STATION_CHOICES = (
+        ('AAA', _('AAA')),
+        ('ALS', _('ALS')),
+        ('B3', _('B3')),
+        ('DP1', _('DP1')),
+        ('DP2', _('DP2')),
+        ('HBT', _('HBT')),
+        ('IT-CG', _('IT-CG')),
+        ('IT-HSG1', _('IT-HSG1')),
+        ('IT-HSG2', _('IT-HSG2')),
+        ('MBA', _('MBA')),
+        ('MBO', _('MBO')),
+        ('MIC2', _('MIC2')),
+        ('PFR', _('PFR')),
+        ('RCAM', _('RCAM')),
+        ('SA-IT-CG', _('SA-IT-CG')),
+        ('SA-IT-HSG1', _('SA-IT-HSG1')),
+        ('SA-IT-HSG2', _('SA-IT-HSG2')),
+        ('SMS', _('SMS')),
+        ('STOM', _('STOM')),
+    )
     station = models.CharField(
         max_length=20,
+        choices=STATION_CHOICES,
         verbose_name=_('station'),
     )
 
