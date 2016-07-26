@@ -25,6 +25,18 @@
             {#<li><a href="{% url 'buglist_list' %}">BUG Lists</a></li>#}
         </ul>
     </div>
+    
+    <div>
+        <form class="navbar-right navbar-form" method="post" action="{% url 'logout' %}">
+            {% if user.is_authenticated %}
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{% url 'home' %}">
+            <button class="btn btn-default" type="submit">{{ user }} 登出</button>
+            {% else %}
+            <a class="btn btn-default" href="{% url 'login' %}">登入</a>
+            {% endif %}
+        </form>
+    </div>
 
   </div>
 </nav>

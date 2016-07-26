@@ -17,7 +17,7 @@ BuglistFormSet = inlineformset_factory(
 class BuglistForm(forms.ModelForm):
     class Meta:
         model = Buglist
-        fields = ('status', 'types', 'station', 'title', 'content',)
+        fields = ('status', 'types', 'station', 'content',)
 
 
 class TrackerForm(forms.ModelForm):

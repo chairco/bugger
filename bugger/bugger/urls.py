@@ -22,6 +22,7 @@ from pages.views import index
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index, name='home'),
+    url(r'^accounts/', include('django.contrib.auth.urls')),
 
     #url(r'^event/', include('events.urls')),
     url(r'^buglist/', include('buglists.urls')),

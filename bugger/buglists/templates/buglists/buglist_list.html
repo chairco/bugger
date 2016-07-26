@@ -22,7 +22,6 @@
             <th>#</th>
             <th>Type</th>
             <th>Station</th>
-            <th>Title</th>
             <th>Content</th>
             <th>Created_at</th>
             <th>Status</th>
@@ -32,8 +31,7 @@
             <td>{{ object.id }}</td>
             <td>{{ object.types }}</td>
             <td>{{ object.station }}</td>
-            <td><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></td>
-            <td>{{ object.content }}</td>
+            <td><a href="{{ object.get_absolute_url }}">{{ object.content }}</a></td>
             <td>{{ object.created_at }}</td>
             <td>
             {% if object.status == "OPEN" %}

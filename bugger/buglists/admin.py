@@ -11,7 +11,7 @@ class StationInline(admin.TabularInline):
 
 @admin.register(Buglist)
 class BuglistAdmin(admin.ModelAdmin):
-    list_display = ['id','status', 'types', 'station', 'title', 'content', 'owner', 'created_at']
+    list_display = ['id','status', 'types', 'station', 'content', 'owner', 'created_at']
     inlines = [StationInline]
 
 @admin.register(Tracker)
