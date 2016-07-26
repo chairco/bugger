@@ -52,6 +52,7 @@ class Buglist(models.Model):
     )
 
     title = models.CharField(
+        default=None,
         blank=True, null=True,
         max_length=100,
         verbose_name=_('title'),
