@@ -51,11 +51,11 @@ class Buglist(models.Model):
         verbose_name=_('station'),
     )
 
-    #title = models.CharField(
-    #    blank=True, null=True,
-    #    max_length=100,
-    #    verbose_name=_('title'),
-    #)
+    title = models.CharField(
+        blank=True, null=True,
+        max_length=100,
+        verbose_name=_('title'),
+    )
 
     content = models.TextField(
         max_length=2000, null=True,
@@ -83,7 +83,7 @@ class Buglist(models.Model):
         verbose_name_plural = _('Buglists')
 
     def __str__(self):
-        return "#"+str(self.id)+ ', ' + str(self.title)
+        return "#"+str(self.id)+ ', ' + str(self.content)
 
     def get_absolute_url(self):
         return reverse('buglist_detail', kwargs={'pk': self.pk})

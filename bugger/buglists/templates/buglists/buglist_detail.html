@@ -7,13 +7,13 @@
 
     <ul class="breadcrumb">
         {% block bar %}{{ block.super }}
-            <li class="active">{{ object.title }}</li>
+            <li class="active">{{ object.content }}</li>
         {% endblock bar %}
     </ul>
 
     <div class="page-header">
         <a class="btn btn-primary pull-right" href="{% url 'buglist_edit' pk=object.pk %}"><i class="icon-edit icon-white"></i>Edit</a>
-        <h1>{{ object.title }}</h1>
+        <h1>{{ object.content }}</h1>
         {% if object.status == "OPEN" %}
             <span class="label label-danger">#{{ object.id }} open</span>
         {% elif object.status == "CLOSE" %}

@@ -19,8 +19,8 @@
 {% block content %}
     <ul class="breadcrumb">
         {% block bar %}{{ block.super }}
-            {% if object.title %}
-                <li class="active">{{ object.title }}</li>
+            {% if object.content %}
+                <li class="active">{{ object.content }}</li>
             {% else %}
                 <li class="active">Bug Tracker</li>
             {% endif %}
