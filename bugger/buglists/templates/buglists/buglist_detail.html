@@ -53,7 +53,11 @@
         </blockquote>
 
         <div class="form-trackers">
-            {% crispy event_form %}
+            {% if user.is_authenticated %}
+                {% crispy event_form %}
+            {% else %}
+                <h3 class="text-primary">請登入才能建立追蹤</h3>
+            {% endif %}
         </div>
 
     </div>
