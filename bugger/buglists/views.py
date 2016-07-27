@@ -57,6 +57,9 @@ class FormsetMixin(object):
         return kwargs
 
     def form_valid(self, form, formset):
+        buglist = form.save(commit=False)
+        if self.request.user.is_authenticated():
+            buglist.owner = self.request.user
         self.object = form.save()
         formset.instance = self.object
         formset.save()
@@ -99,6 +102,14 @@ class BuglistTracker(CreateView):
     template_name = 'buglists/buglist_tracker.html'
     form_class = TrackerForm
     model = Tracker
+
+    def form_valid(self, form):
+        tracker = form.save(commit=False)
+        if self.request.user.is_authenticated():
+            tracker.owner = self.request.user
+        form.save()
+        return super(BuglistTracker, self).form_valid(form)
+        
 
 
 def buglist_detail(request, pk):
